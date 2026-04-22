@@ -3,15 +3,14 @@ import { MemberCard } from './MemberCard'
 
 interface MemberGridProps {
   members: Member[]
-  onToggleStatus: (id: number) => void
 }
 
-export function MemberGrid({ members, onToggleStatus }: MemberGridProps) {
+export function MemberGrid({ members }: MemberGridProps) {
   if (members.length === 0) {
     return (
       <section className="empty-state">
-        <h2>No se encontraron estudiantes</h2>
-        <p>Prueba otra búsqueda o ajusta el filtro.</p>
+        <h2>No hay tarjetas activas</h2>
+        <p>Los estudiantes apareceran aqui en cuanto acerquen su tarjeta al lector.</p>
       </section>
     )
   }
@@ -19,7 +18,7 @@ export function MemberGrid({ members, onToggleStatus }: MemberGridProps) {
   return (
     <section className="member-grid" aria-live="polite">
       {members.map((member) => (
-        <MemberCard key={member.id} member={member} onToggleStatus={onToggleStatus} />
+        <MemberCard key={member.id} member={member} />
       ))}
     </section>
   )
